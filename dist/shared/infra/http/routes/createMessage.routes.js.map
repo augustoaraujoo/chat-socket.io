@@ -1,0 +1,1 @@
+{"version":3,"file":"createMessage.routes.js","sourceRoot":"","sources":["../../../../../src/shared/infra/http/routes/createMessage.routes.ts"],"names":[],"mappings":";;;AAAA,mCAAiC;AAEjC,2FAA0F;AAE1F,IAAM,SAAS,GAAG,IAAA,gBAAM,GAAE,CAAC;AAMlB,8BAAS;AAJlB,IAAM,uBAAuB,GAAG,IAAI,yCAAmB,EAAE,CAAC;AAE1D,SAAS,CAAC,IAAI,CAAC,SAAS,EAAE,uBAAuB,CAAC,MAAM,CAAC,CAAC"}

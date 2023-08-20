@@ -1,0 +1,6 @@
+class CreateMsgUseCase {
+
+
+}
+
+export { CreateMsgUseCase };
