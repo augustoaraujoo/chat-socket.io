@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { msgRouter } from "./createMessage.routes";
+import { createConnectionRouter } from "./createConnection.routes";
 
 
 const routes = Router();
 
-routes.use("/", msgRouter)
+routes.use("/", createConnectionRouter)
 
 export { routes }

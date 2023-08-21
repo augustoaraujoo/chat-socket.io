@@ -1,6 +1,0 @@
-class CreateMsgUseCase {
-
-
-}
-
-export { CreateMsgUseCase };

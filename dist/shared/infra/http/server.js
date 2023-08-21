@@ -11,7 +11,9 @@ var socket_io_1 = require("socket.io");
 var app = (0, express_1.default)();
 var PORT = 3005;
 exports.PORT = PORT;
-app.use(express_1.default.static(path_1.default.join(__dirname, '..', "public")));
+var pathPublic = express_1.default.static(path_1.default.join(__dirname, '..', "public"));
+app.use(pathPublic);
+//app.use(createConnectionRouter)
 var serverHttp = http_1.default.createServer(app);
 exports.serverHttp = serverHttp;
 var io = new socket_io_1.Server(serverHttp, {
