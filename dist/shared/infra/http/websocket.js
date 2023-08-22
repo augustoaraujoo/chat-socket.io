@@ -28,7 +28,7 @@ server_1.io.on("connection", function (socket) {
         users.push({
             room: data.room,
             username: data.username,
-            socket_id: socket.id
+            socket_id: socket.id,
         });
         //retornando todas as msg dentro da sala
         var messagesRoom = getMessagesRoom(data.room);
@@ -46,6 +46,7 @@ server_1.io.on("connection", function (socket) {
         //emitindo a msg para todos users q estão dentro da room  
         server_1.io.to(data.room).emit("message", message);
     });
+    //totalMessages
 });
 function getMessagesRoom(room) {
     var messagesRoom = messages.filter(function (message) { return message.room === room; });

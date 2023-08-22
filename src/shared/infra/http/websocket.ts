@@ -48,12 +48,16 @@ io.on("connection", (socket) => {
 
         //retornando todas as msg dentro da sala
         const messagesRoom = getMessagesRoom(data.room)
+
         callback(messagesRoom)
 
-        console.log(users);
+
 
 
     })
+
+
+
     socket.on("message", data => {
         const message: Messages = {
             room: data.room,
@@ -63,12 +67,25 @@ io.on("connection", (socket) => {
         }
         messages.push(message);
         //emitindo a msg para todos users q estão dentro da room  
-        io.to(data.room).emit("message", message)
+        io.to(data.room).emit("message", message);
+
+
     })
+
+
+
 })
 
 function getMessagesRoom(room: string) {
+
+
+
     const messagesRoom = messages.filter(message => message.room === room);
+
+    const totalMsgInRoom = messagesRoom.reduce((acc, i) => {
+        return acc + 1
+    }, 0)
+    console.log(totalMsgInRoom);
 
     return messagesRoom
 }
