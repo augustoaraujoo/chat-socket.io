@@ -10,10 +10,10 @@ interface RoomUser {
     room: string;
 }
 interface Messages {
-    room: string,
-    username: string,
-    message: string,
-    createdAt: Date
+    room: string;
+    message: string;
+    createdAt: Date;
+    username: string;
 }
 const users: RoomUser[] = [];
 const messages: Messages[] = []
@@ -40,9 +40,9 @@ io.on("connection", (socket) => {
         socket.join(data.room);
 
         users.push({
-            socket_id: socket.id,
+            room: data.room,
             username: data.username,
-            room: data.room
+            socket_id: socket.id,
         })
 
 

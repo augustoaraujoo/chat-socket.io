@@ -26,9 +26,9 @@ server_1.io.on("connection", function (socket) {
         }
         socket.join(data.room);
         users.push({
-            socket_id: socket.id,
+            room: data.room,
             username: data.username,
-            room: data.room
+            socket_id: socket.id
         });
         //retornando todas as msg dentro da sala
         var messagesRoom = getMessagesRoom(data.room);
