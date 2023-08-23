@@ -8,13 +8,16 @@ interface RoomUser {
     socket_id: string;
     username: string;
     room: string;
+
 }
+
 interface Messages {
     room: string;
     message: string;
     createdAt: Date;
     username: string;
 }
+
 const users: RoomUser[] = [];
 const messages: Messages[] = []
 //emitir para todos usuerios conectados io.on
@@ -43,16 +46,23 @@ io.on("connection", (socket) => {
             room: data.room,
             username: data.username,
             socket_id: socket.id,
+
         })
 
 
         //retornando todas as msg dentro da sala
         const messagesRoom = getMessagesRoom(data.room)
 
+
+        const total = getMessagesRoom(data.room);
+        const totalMsgInRoom = total.reduce((acc, i) => {
+            return acc + 1
+        }, 0);
+
+        io.emit('total_msg', { totalMsgInRoom });
+        // esse dado precisa ser lido pelo client ->
+
         callback(messagesRoom)
-
-
-
 
     })
 
@@ -82,10 +92,7 @@ function getMessagesRoom(room: string) {
 
     const messagesRoom = messages.filter(message => message.room === room);
 
-    const totalMsgInRoom = messagesRoom.reduce((acc, i) => {
-        return acc + 1
-    }, 0)
-    console.log(totalMsgInRoom);
+
 
     return messagesRoom
 }

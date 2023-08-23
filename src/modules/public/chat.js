@@ -10,7 +10,7 @@ userDiv.innerHTML = `Olá ${username} você está conectado na sala ${room}`
 // passando o callback para receber as mensagens do servidor
 socket.emit('select_room',
     { username, room },
-    messages => {
+    (messages) => {
         messages.forEach(message => createMessage(message))
     });
 
@@ -36,7 +36,10 @@ socket.on("message", data => {
 })
 
 
+socket.on("total_msg", (data) => {
+    console.log(data);
 
+})
 
 // func innerhtml com data vindo do scoket message
 function createMessage(data) {
