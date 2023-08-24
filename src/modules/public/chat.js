@@ -38,8 +38,11 @@ socket.on("message", data => {
 
 socket.on("total_msg", (data) => {
     console.log(data);
-
+    const totalMSG = document.getElementById('totalMSG');
+    totalMSG.innerHTML=`${data.totalMsgInRoom}`
 })
+
+
 
 // func innerhtml com data vindo do scoket message
 function createMessage(data) {

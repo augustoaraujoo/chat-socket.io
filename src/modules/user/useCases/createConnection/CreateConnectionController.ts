@@ -1,10 +1,9 @@
-import { Response, Request } from 'express';
+import { Socket } from 'socket.io';
 import { CreateConnectionUseCase } from './CreateConnectionUseCase';
-import { SocketRepository } from 'modules/repositories/SocketRepository';
+import { SocketRepository } from '../../../../modules/repositories/SocketRepository';
 
-//connect
 class CreateConnectionController {
-    async handle(req: Request, res: Response) {
+    async handle() {
         const socketRepository = new SocketRepository();
         const createConnectionUseCase = new CreateConnectionUseCase(socketRepository);
         return createConnectionUseCase.execute();

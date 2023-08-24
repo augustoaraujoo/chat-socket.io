@@ -25,6 +25,7 @@ const messages: Messages[] = []
 //escutar os eventos qeu foram emitidos usamos io/socket  .on
 //escutando o evento do client
 io.on("connection", (socket) => {
+    
     socket.on("select_room", (data, callback) => {
         //socket.id é o id do usuario que esta conectado
         // qnd ele se conectar ja vai ser adicionado na lista de usuarios
@@ -48,18 +49,13 @@ io.on("connection", (socket) => {
             socket_id: socket.id,
 
         })
-
+       
 
         //retornando todas as msg dentro da sala
         const messagesRoom = getMessagesRoom(data.room)
 
-
-        const total = getMessagesRoom(data.room);
-        const totalMsgInRoom = total.reduce((acc, i) => {
-            return acc + 1
-        }, 0);
-
-        io.emit('total_msg', { totalMsgInRoom });
+        
+        
         // esse dado precisa ser lido pelo client ->
 
         callback(messagesRoom)
@@ -75,10 +71,16 @@ io.on("connection", (socket) => {
             message: data.message,
             createdAt: new Date()
         }
+        
         messages.push(message);
         //emitindo a msg para todos users q estão dentro da room  
+       
         io.to(data.room).emit("message", message);
-
+        const total = getMessagesRoom(data.room);
+        const totalMsgInRoom = total.reduce((acc, i) => {
+            return acc + 1
+        }, 0);
+        io.emit('total_msg', { totalMsgInRoom })
 
     })
 
