@@ -13,7 +13,8 @@ const colaboradores: Colaborador[] = [];
 colaboradores.push({
     email: 'lucas.fernandes@cliente.com',
     matricula: 3748,
-    nota: 0
+    nota: 0,
+    reacoes:'Like'
 })
 colaboradores.push({
     email: 'pedro.lima@cliente.com',

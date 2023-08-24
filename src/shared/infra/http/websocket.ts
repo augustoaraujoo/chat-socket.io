@@ -15,6 +15,7 @@ io.on("connection", (socket) => {
             verify.socket_id = socket.id;
             console.log(verify);
         }
-
+        socket.emit("dados_colaborador", { verify });
     })
+    socket.emit("colaboradores",{colaboradores})
 })
