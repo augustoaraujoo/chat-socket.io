@@ -13,7 +13,6 @@ io.on("connection", (socket) => {
         })
         if (verify) {
             verify.socket_id = socket.id;
-            console.log(verify);
         }
         socket.emit("dados_colaborador", { verify });
     })
