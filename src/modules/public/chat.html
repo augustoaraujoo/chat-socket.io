@@ -23,7 +23,7 @@
         <div id="emailColaboradorDIV"></div>
         <div id="notaColaboradorDIV"></div>
         <div id="reactColaboradorDIV"></div>
-        <div id="totalColaboradores">totalDeMensagens/ mostrarmsg</div>
+        <div id="totalColaboradores"></div>
 
         <hr />
 
@@ -31,9 +31,9 @@
           <div class="messages" id="messages"></div>
         </div>
 
-        <table id="tabelaDados">
+        <table class="table table-striped-columns" id="tabelaDados">
           <thead>
-            <tr>
+            <tr class="table-success">
               <th>Colaborador</th>
               <th>Nota</th>
             </tr>
@@ -43,19 +43,120 @@
           </tbody>
         </table>
 
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Digite sua nota"
-          id="nota_input"
-        />
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Digite sua mensagem"
-          id="message_input"
-        />
-        <footer></footer>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Digite a matrícula do Colaborador"
+                  id="matrícula_input"
+                />
+                <legend class="col-form-label col-sm-20 pt-0">
+                  Escolha uma reação
+                </legend>
+                <!-- centralizar --->
+                <div class="row row-cols-4">
+                  <div class="form-check" >
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios1"
+                      value="Like"
+                      checked
+                    />
+                    <label class="form-check-label" for="exampleRadios1">
+                      Like
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios2"
+                      value="Orgulho"
+                    />
+                    <label class="form-check-label" for="exampleRadios2">
+                      Orgulho
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios3"
+                      value="Excelente Trabalho"
+                    />
+                    <label class="form-check-label" for="exampleRadios3">
+                      Excelente Trabalho
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios4"
+                      value="Colaboração"
+                    />
+                    <label class="form-check-label" for="exampleRadios4">
+                      Colaboração
+                    </label>
+                  </div>
+                </div>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Digite sua nota"
+                  id="nota_input"
+                />
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Digite sua mensagem"
+                  id="mensagem_input"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  fechar
+                </button>
+                <button type="button" class="btn btn-primary">enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Dar nota para um Colaborador
+        </button>
       </div>
     </div>
   </body>

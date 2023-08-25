@@ -13,28 +13,40 @@
     />
   </head>
   <body>
-    <form id="form-index" action="chat.html">
+    <form
+      id="form-index"
+      action="chat.html"
+      class="position-absolute top-50 start-50 translate-middle w-40 p-3"
+    >
       <div class="container">
         <div class="row">
-          <label class="form-label">Digite seu email</label>
+          <label class="form-control border border-0">Digite seu email</label>
           <input
-            type="text"
+            class="form-control"
+            type="email"
             name="email"
             required
             placeholder="example@gmail.com"
           />
         </div>
+        <!-- <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Digite sua mensagem"
+                  id="mensagem_input"
+                /> -->
         <div class="row">
-          <label class="form-label">Digite sua matrícula</label>
+          <label class="form-control border border-0">Digite sua matrícula</label>
           <input
-            type="text"
+            class="form-control"
+            type="number"
             name="matricula"
             required
-            placeholder="exemplo 1234"
+            placeholder="exemple 1234"
           />
         </div>
 
-        <div class="row">
+        <div class="position-absolute bottom-5 start-50 translate-middle-x">
           <button type="submit" class="btn btn-primary mb-3">Entrar</button>
         </div>
       </div>
