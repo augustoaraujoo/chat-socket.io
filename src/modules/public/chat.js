@@ -1,5 +1,4 @@
 const socket = io('http://localhost:3005');
-
 const urLSearch = new URLSearchParams(window.location.search);
 const email = urLSearch.get('email');
 const matricula = urLSearch.get('matricula');
@@ -7,17 +6,24 @@ const matricula = urLSearch.get('matricula');
 socket.emit("login", { email, matricula })
 
 
-const emailColaboradorDIV = document.getElementById('emailColaboradorDIV');
-const notaColaboradorDIV = document.getElementById('notaColaboradorDIV');
-const reactColaboradorDIV = document.getElementById('reactColaboradorDIV');
 socket.on('dados_colaborador', (data) => {
+    const emailColaboradorDIV = document.getElementById('emailColaboradorDIV');
+    const notaColaboradorDIV = document.getElementById('notaColaboradorDIV');
+    const reactColaboradorDIV = document.getElementById('reactColaboradorDIV');
     emailColaboradorDIV.innerHTML = `${data.verify.email}`
     notaColaboradorDIV.innerHTML = `${data.verify.nota}`
     reactColaboradorDIV.innerHTML = `${data.verify.reacoes}`
 })
 
 socket.on("colaboradores", (data) => {
-    const tabelaDados = document.getElementById('tabelaDados')
+
+
+    const notaDecrescente = data.colaboradores.sort(function (a, b) {
+        return b.nota - a.nota
+    });
+
+
+    const tabelaDados = document.getElementById('tabelaDados');
     for (const obj of data.colaboradores) {
         const newRow = tabelaDados.insertRow();
         const emailColaborador = newRow.insertCell(0);
