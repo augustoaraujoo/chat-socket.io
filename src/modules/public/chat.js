@@ -1,3 +1,4 @@
+//http://127.0.0.1:5500/src/modules/public/chat.html?email=lucas.fernandes%40cliente.com&matricula=3748
 const socket = io('http://localhost:3005');
 const urLSearch = new URLSearchParams(window.location.search);
 const email = urLSearch.get('email');
@@ -36,6 +37,29 @@ socket.on("colaboradores", (data) => {
     //pra cada colocaborador coloca-se um input e digita a nota/desc
     // usa o socket.id ou matricula para ter certeza
 })
+
+
+/* SCRIPT PARA O MODAL*/
+
+let matricula_input = document.getElementById('matricula_input');
+//inputs radio
+let exampleRadios1 = document.getElementById('exampleRadios1')
+let exampleRadios2 = document.getElementById('exampleRadios2')
+let exampleRadios3 = document.getElementById('exampleRadios3')
+let exampleRadios4 = document.getElementById('exampleRadios4')
+
+let nota_input = document.getElementById('nota_input');
+
+let mensagem_input = document.getElementById('mensagem_input');
+
+
+//emitir um evento / push data({ com as infos passadas pelo client })=> para um determinado colaborador por MATRICULA ; VERIFICAR SE MATRICULA EXISTE
+document.getElementById('enviarNota').addEventListener('click', (event) => {
+    matricula_input=6870, nota_input=321, mensagem_input='oi';
+    socket.emit("modal", { matricula_input, nota_input, mensagem_input })
+})
+
+
 document.getElementById("logout").addEventListener('click', (event) => {
     window.location.href = 'index.html'
 })
