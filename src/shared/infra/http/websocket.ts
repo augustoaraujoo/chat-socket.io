@@ -21,20 +21,32 @@ io.on("connection", (socket) => {
 
     socket.emit("colaboradores", { colaboradores })
     socket.on("modal", (data) => {
-        
-        //verificar qm esta me enviando isto {email,matricula}=> url
-        
-        console.log(data);
-        
+
+
+
         const verify = colaborador.find((c) => {
             return c.matricula == data.matricula_input
         })
-        
-        if (verify) {
-            verify.nota = data.nota_input,
-            verify.desc = data.mensagem_input
+
+        if (data.email === verify?.email || data.matricula_input === verify?.matricula) {
+            const msg_err = 'você não pode enviar uma nota para si mesmo !'
+            socket.emit('colaborador_err', { msg_err })
+            return;
+
+        } else {
+            const colabEmail = data.email;
+            const colabMatricula = data.matricula;
+
+            socket.emit("colaboradorQmeEnviou", { colabEmail, colabMatricula })
         }
 
+
+        if (verify) {
+            verify.nota = Number(data.nota_input) + Number(verify.nota),
+                verify.desc = data.mensagem_input,
+                verify.reacoes = data.reacao_input
+        }
+        console.log(verify);
 
     })
 })

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socket IO</title>
+    <title>DêNota</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,39 +12,77 @@
       crossorigin="anonymous"
     />
   </head>
-
+  <!--http://127.0.0.1:3000/src/modules/public/chat.html?email=lucas.fernandes%40cliente.com&matricula=3748 -->
+  <!-- d-grid gap-2 col-6 mx-auto -->
   <body>
     <div class="container">
       <div class="row">
+        <hr />
+
         <button type="button" class="btn btn-outline-danger" id="logout">
           Logout
         </button>
-        <div id="totalMSG"></div>
+        <hr />
+        <hr />
+        <div id="nomeColaboradorDIV"></div>
+        <div id="fotoURLColaboradorDIV"></div>
         <div id="emailColaboradorDIV"></div>
         <div id="notaColaboradorDIV"></div>
+        <div id="descColaboradorDIV"></div>
         <div id="reactColaboradorDIV"></div>
         <div id="totalColaboradores"></div>
 
         <hr />
 
-        <div id="chat_content">
-          <div class="messages" id="messages"></div>
-        </div>
-
-        <table class="table table-striped-columns" id="tabelaDados">
-          <thead>
-            <tr class="table-success">
-              <th>Colaborador</th>
-              <th>Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Os dados serão inseridos aqui via JavaScript -->
-          </tbody>
-        </table>
-
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Dashboard Colaboradores
+        </button>
+        <hr />
         <!-- Modal -->
         <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <table class="table table-striped-columns" id="tabelaDados">
+                  <thead>
+                    <tr class="table-success">
+                      <th>Colaborador</th>
+                      <th>Nota</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Os dados serão inseridos aqui via JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form
           class="modal fade"
           id="exampleModal"
           tabindex="-1"
@@ -53,27 +91,21 @@
         >
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
+              <div class="modal-header"></div>
               <div class="modal-body">
                 <input
                   class="form-control"
                   type="number"
                   placeholder="Digite a matrícula do Colaborador"
                   id="matricula_input"
+                  required
                 />
                 <legend class="col-form-label col-sm-20 pt-0">
                   Escolha uma reação
                 </legend>
-                <!-- centralizar --->
+
                 <div class="row row-cols-4">
-                  <div class="form-check" >
+                  <div class="form-check">
                     <input
                       class="form-check-input"
                       type="radio"
@@ -126,12 +158,14 @@
                 <input
                   class="form-control"
                   type="text"
+                  required
                   placeholder="Digite sua nota"
                   id="nota_input"
                 />
                 <input
                   class="form-control"
                   type="text"
+                  required
                   placeholder="Digite sua mensagem"
                   id="mensagem_input"
                 />
@@ -144,18 +178,20 @@
                 >
                   fechar
                 </button>
-                <button type="button" id="enviarNota" class="btn btn-primary">enviar</button>
+                <submit type="button" id="enviarNota" class="btn btn-primary">
+                  enviar
+                </submit>
               </div>
             </div>
           </div>
-        </div>
+        </form>
         <button
           type="button"
           class="btn btn-primary"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
-          Dar nota para um Colaborador
+          Avalie um Colaborador
         </button>
       </div>
     </div>
@@ -172,7 +208,8 @@
     referrerpolicy="no-referrer"
   ></script>
   <!-- <script src="/socket.io/socket.io.js"></script> -->
-  <script src="chat.js" ></script>
+  <script src="chat.js"></script>
+
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"
     integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q=="

@@ -11,25 +11,47 @@ socket.on('dados_colaborador', (data) => {
     const emailColaboradorDIV = document.getElementById('emailColaboradorDIV');
     const notaColaboradorDIV = document.getElementById('notaColaboradorDIV');
     const reactColaboradorDIV = document.getElementById('reactColaboradorDIV');
-    emailColaboradorDIV.innerHTML = `${data.verify.email}`
-    notaColaboradorDIV.innerHTML = `${data.verify.nota}`
-    reactColaboradorDIV.innerHTML = `${data.verify.reacoes}`
+    const descColaboradorDIV = document.getElementById('descColaboradorDIV');
+    const nomeColaboradorDIV = document.getElementById('nomeColaboradorDIV');
+    const fotoURLColaboradorDIV = document.getElementById('fotoURLColaboradorDIV');
+
+    if (typeof data.verify.reacoes === 'undefined' && typeof data.verify.desc === 'undefined') {
+        reactColaboradorDIV.innerHTML = `Você não recebeu uma reação ainda!`
+        descColaboradorDIV.innerHTML = `Você não recebeu uma descrições ainda!`
+
+    } else {
+
+        reactColaboradorDIV.innerHTML = `reações: ${data.verify.reacoes}`
+        descColaboradorDIV.innerHTML = `descrições recebidas: ${data.verify.desc}`
+
+
+    }
+    emailColaboradorDIV.innerHTML = `seu email: ${data.verify.email}`
+    notaColaboradorDIV.innerHTML = `total de notas: ${data.verify.nota}`
+    nomeColaboradorDIV.innerHTML = `Olá ${data.verify.nome}`
+    
+    const img = document.createElement("img");
+    img.src = `${data.verify.foto_url}`
+
+    fotoURLColaboradorDIV.appendChild(img)
+});
+socket.on("colaboradorQmeEnviou", (data) => {
+
+    console.log(`você recebeu uma avaliação de ${data.colabEmail}`);
 })
 
 socket.on("colaboradores", (data) => {
-
 
     const notaDecrescente = data.colaboradores.sort(function (a, b) {
         return b.nota - a.nota
     });
 
-
     const tabelaDados = document.getElementById('tabelaDados');
+
     for (const obj of data.colaboradores) {
         const newRow = tabelaDados.insertRow();
         const emailColaborador = newRow.insertCell(0);
         let notaColaborador = newRow.insertCell(1);
-
         emailColaborador.innerHTML = obj.email;
         notaColaborador.innerHTML = obj.nota;
 
@@ -41,23 +63,41 @@ socket.on("colaboradores", (data) => {
 
 /* SCRIPT PARA O MODAL*/
 
-let matricula_input = document.getElementById('matricula_input');
 //inputs radio
 let exampleRadios1 = document.getElementById('exampleRadios1')
 let exampleRadios2 = document.getElementById('exampleRadios2')
 let exampleRadios3 = document.getElementById('exampleRadios3')
 let exampleRadios4 = document.getElementById('exampleRadios4')
 
-let nota_input = document.getElementById('nota_input');
-
-let mensagem_input = document.getElementById('mensagem_input');
-
 
 //emitir um evento / push data({ com as infos passadas pelo client })=> para um determinado colaborador por MATRICULA ; VERIFICAR SE MATRICULA EXISTE
 document.getElementById('enviarNota').addEventListener('click', (event) => {
-    matricula_input=6870, nota_input=321, mensagem_input='oi';
-    socket.emit("modal", { matricula_input, nota_input, mensagem_input })
+
+
+    let matricula_input = document.getElementById('matricula_input').value.trim();
+
+    let nota_input = document.getElementById('nota_input').value.trim()
+
+    let mensagem_input = document.getElementById('mensagem_input').value.trim()
+
+    const options = document.getElementsByName("exampleRadios");
+
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].checked) {
+            const reacao_input = options[i].value;
+
+            socket.emit("modal", { matricula_input, nota_input, mensagem_input, reacao_input, email, matricula })
+            alert('avaliação enviada!')
+            break;
+        }
+    }
+
 })
+
+socket.on("colaborador_err", (data) => {
+    alert(data.msg_err)
+})
+
 
 
 document.getElementById("logout").addEventListener('click', (event) => {
