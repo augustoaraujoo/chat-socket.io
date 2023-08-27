@@ -5,7 +5,7 @@ interface Colaborador {
     matricula: number;
     nota: number | 0;
     reacoes?: ('Like' | 'Orgulho' | 'Excelente Trabalho' | 'Colaboração')[];
-    desc?: string;
+    desc?: (string)[];
     foto_url?: string
 }
 

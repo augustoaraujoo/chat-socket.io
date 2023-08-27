@@ -20,15 +20,15 @@ socket.on('dados_colaborador', (data) => {
         descColaboradorDIV.innerHTML = `Você não recebeu uma descrições ainda!`
 
     } else {
-
         reactColaboradorDIV.innerHTML = `reações: ${data.verify.reacoes}`
-        descColaboradorDIV.innerHTML = `descrições recebidas: ${data.verify.desc}`
+        //  
+        descColaboradorDIV.innerHTML = `descrições recebidas: ${data.verify.desc}`.replace("undefined", "")
 
 
     }
     emailColaboradorDIV.innerHTML = `seu email: ${data.verify.email}`
     notaColaboradorDIV.innerHTML = `total de notas: ${data.verify.nota}`
-    nomeColaboradorDIV.innerHTML = `Olá ${data.verify.nome}`
+    nomeColaboradorDIV.innerHTML = `${data.verify.nome}`
 
     const img = document.createElement("img");
     img.style.width = '60px'
@@ -46,18 +46,18 @@ socket.on("colaboradores", (data) => {
     const notaDecrescente = data.colaboradores.sort(function (a, b) {
         return b.nota - a.nota
     });
-    
+
     const tabelaDados = document.getElementById('tabelaDados');
     for (const obj of data.colaboradores) {
-        
+
         const newRow = tabelaDados.insertRow();
         const emailColaborador = newRow.insertCell(0);
         let notaColaborador = newRow.insertCell(1);
 
         for (let i = 0; i < 3 && i < notaDecrescente.length; i++) {
             const pessoa = notaDecrescente[i];
-            console.log(pessoa.email);
-    
+            //console.log(pessoa.email);
+
             // const listItem = document.createElement('li');
             // listItem.innerHTML = `<strong>${pessoa.nome}:</strong> Nota: ${pessoa.nota}`;
             // listaUl.appendChild(listItem);

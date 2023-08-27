@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
     socket.emit("colaboradores", { colaboradores })
 
     socket.on("modal", (data) => {
-        
+
         const verify = colaborador.find((c) => {
             return c.matricula == data.matricula_input
         })
@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
 
         if (verify) {
             verify.nota = Number(data.nota_input) + Number(verify.nota),
-                verify.desc = data.mensagem_input,
+                verify.desc = verify.desc += data.mensagem_input,
                 verify.reacoes = data.reacao_input
         }
         console.log(verify);
