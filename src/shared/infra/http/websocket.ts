@@ -20,10 +20,9 @@ io.on("connection", (socket) => {
     })
 
     socket.emit("colaboradores", { colaboradores })
+
     socket.on("modal", (data) => {
-
-
-
+        
         const verify = colaborador.find((c) => {
             return c.matricula == data.matricula_input
         })
@@ -47,6 +46,5 @@ io.on("connection", (socket) => {
                 verify.reacoes = data.reacao_input
         }
         console.log(verify);
-
     })
 })

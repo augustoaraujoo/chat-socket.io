@@ -29,8 +29,9 @@ socket.on('dados_colaborador', (data) => {
     emailColaboradorDIV.innerHTML = `seu email: ${data.verify.email}`
     notaColaboradorDIV.innerHTML = `total de notas: ${data.verify.nota}`
     nomeColaboradorDIV.innerHTML = `Olá ${data.verify.nome}`
-    
+
     const img = document.createElement("img");
+    img.style.width = '60px'
     img.src = `${data.verify.foto_url}`
 
     fotoURLColaboradorDIV.appendChild(img)
@@ -45,19 +46,27 @@ socket.on("colaboradores", (data) => {
     const notaDecrescente = data.colaboradores.sort(function (a, b) {
         return b.nota - a.nota
     });
-
+    
     const tabelaDados = document.getElementById('tabelaDados');
-
     for (const obj of data.colaboradores) {
+        
         const newRow = tabelaDados.insertRow();
         const emailColaborador = newRow.insertCell(0);
         let notaColaborador = newRow.insertCell(1);
+
+        for (let i = 0; i < 3 && i < notaDecrescente.length; i++) {
+            const pessoa = notaDecrescente[i];
+            console.log(pessoa.email);
+    
+            // const listItem = document.createElement('li');
+            // listItem.innerHTML = `<strong>${pessoa.nome}:</strong> Nota: ${pessoa.nota}`;
+            // listaUl.appendChild(listItem);
+        }
+
         emailColaborador.innerHTML = obj.email;
         notaColaborador.innerHTML = obj.nota;
 
     }
-    //pra cada colocaborador coloca-se um input e digita a nota/desc
-    // usa o socket.id ou matricula para ter certeza
 })
 
 
