@@ -17,7 +17,7 @@ socket.on('dados_colaborador', (data) => {
 
     if (typeof data.verify.reacoes === 'undefined' && typeof data.verify.desc === 'undefined') {
         reactColaboradorDIV.innerHTML = `Você não recebeu uma reação ainda!`
-        descColaboradorDIV.innerHTML = `Você não recebeu uma descrições ainda!`
+        descColaboradorDIV.innerHTML = `Você não recebeu uma descrição ainda!`
 
     } else {
         reactColaboradorDIV.innerHTML = `reações: ${data.verify.reacoes}`
