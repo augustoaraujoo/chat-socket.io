@@ -48,20 +48,40 @@ socket.on("colaboradores", (data) => {
     });
 
     const tabelaDados = document.getElementById('tabelaDados');
+    for (let i = 0; i < 3 && i < notaDecrescente.length; i++) {
+        const colaborador = notaDecrescente[i];
+        const emailColaborador = colaborador.email;
+        const notaColaborador = colaborador.nota;
+
+
+        const newRow = tabelaDados.insertRow();
+
+        const emailCell = newRow.insertCell(0);
+        const notaCell = newRow.insertCell(1);
+
+        emailCell.innerHTML = emailColaborador;
+        notaCell.innerHTML = notaColaborador;
+        emailCell.style.color = 'white';
+        notaCell.style.color = 'white'
+        if (i === 0) {
+            emailCell.style.backgroundColor = "green"; // Primeiro colocado
+            notaCell.style.backgroundColor = "green";
+        } else if (i === 1) {
+            emailCell.style.backgroundColor = "blue"; // Segundo colocado
+            notaCell.style.backgroundColor = "blue";
+        } else if (i === 2) {
+            emailCell.style.backgroundColor = "red"; // Terceiro colocado
+            notaCell.style.backgroundColor = "red";
+        }
+
+    }
     for (const obj of data.colaboradores) {
 
         const newRow = tabelaDados.insertRow();
+
         const emailColaborador = newRow.insertCell(0);
         let notaColaborador = newRow.insertCell(1);
 
-        for (let i = 0; i < 3 && i < notaDecrescente.length; i++) {
-            const pessoa = notaDecrescente[i];
-            //console.log(pessoa.email);
-
-            // const listItem = document.createElement('li');
-            // listItem.innerHTML = `<strong>${pessoa.nome}:</strong> Nota: ${pessoa.nota}`;
-            // listaUl.appendChild(listItem);
-        }
 
         emailColaborador.innerHTML = obj.email;
         notaColaborador.innerHTML = obj.nota;
