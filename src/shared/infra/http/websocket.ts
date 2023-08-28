@@ -45,6 +45,5 @@ io.on("connection", (socket) => {
                 verify.desc = verify.desc += data.mensagem_input,
                 verify.reacoes = data.reacao_input
         }
-        console.log(verify);
     })
 })

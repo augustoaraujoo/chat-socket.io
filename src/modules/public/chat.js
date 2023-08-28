@@ -38,7 +38,6 @@ socket.on('dados_colaborador', (data) => {
 });
 socket.on("colaboradorQmeEnviou", (data) => {
 
-    console.log(`você recebeu uma avaliação de ${data.colabEmail}`);
 })
 
 socket.on("colaboradores", (data) => {
