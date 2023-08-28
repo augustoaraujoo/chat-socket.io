@@ -5,18 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DNota</title>
+
     <link
-    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    #logoDNota{
-      font-family: 'Courgette', 'cursive'
-    }
-    * {
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <style>
+      #logoDNota {
+        font-family: "Courgette", "cursive";
+      }
+      * {
         font-family: "Poppins", sans-serif;
       }
-  </style>
+    </style>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -31,16 +37,14 @@
     />
   </head>
   <body>
+
     <form
       id="form-index"
       action="chat.html"
       class="position-absolute top-50 start-50 translate-middle w-40 p-3"
     >
       <div class="container">
-        <div id="logoDNota" 
-        style="font-size: 100px;">
-          DNota
-        </div>
+        <div id="logoDNota" style="font-size: 100px">DNota</div>
         <div class="row">
           <label class="form-control border border-0">Digite seu email</label>
           <input
@@ -51,12 +55,6 @@
             placeholder="example@gmail.com"
           />
         </div>
-        <!-- <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Digite sua mensagem"
-                  id="mensagem_input"
-                /> -->
         <div class="row">
           <label class="form-control border border-0"
             >Digite sua matrícula</label
@@ -66,13 +64,15 @@
             type="number"
             name="matricula"
             required
-            placeholder="exemple 1234"
+            placeholder="example 1234"
           />
         </div>
-        <hr style="color: aliceblue;"/>
+        <hr style="color: aliceblue" />
 
         <div class="position-absolute bottom-5 start-50 translate-middle-x">
-          <button type="submit" class="btn btn-primary mb-3">Entrar</button>
+          <button type="submit" id="btnEntrar" class="btn btn-primary mb-3">
+            Entrar
+          </button>
         </div>
       </div>
     </form>

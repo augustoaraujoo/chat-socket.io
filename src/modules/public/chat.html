@@ -11,6 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
+    <!-- Option 1: Include in HTML -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -21,35 +26,33 @@
       * {
         font-family: "Poppins", sans-serif;
       }
+      #premio {
+        cursor: pointer;
+      }
     </style>
   </head>
   <!--http://127.0.0.1:3000/src/modules/public/chat.html?email=lucas.fernandes%40cliente.com&matricula=3748 -->
-  <!-- d-grid gap-2 col-6 mx-auto -->
   <body>
     <div class="container">
       <div class="row">
-        
         <hr style="color: aliceblue" />
         <hr style="color: aliceblue" />
-        <div class="card " style="width: auto; margin: 0 auto">
-          
-        <button
-          type="button"
-          style="width: auto; margin: 10px auto"
-          class="btn btn-outline-danger"
-          id="logout"
-        >
-          Logout
-        </button>
-        <div
+        <div class="card" style="width: auto; margin: 0 auto">
+          <button
+            type="button"
+            style="width: auto; margin: 10px auto"
+            class="btn btn-outline-danger"
+            id="logout"
+          >
+            Logout
+          </button>
+          <div
             class="card-img-top"
             style="margin-top: 1.1rem; margin-left: 1rem"
             id="fotoURLColaboradorDIV"
-          >
-        </div>
+          ></div>
           <div class="card-body">
             <div class="card" style="width: 18rem">
-              
               <ul class="list-group list-group-flush">
                 <div class="card-footer" id="nomeColaboradorDIV"></div>
                 <div class="list-group-item" id="emailColaboradorDIV"></div>
@@ -92,6 +95,12 @@
                     <tr class="table-success">
                       <th>Colaborador</th>
                       <th>Nota</th>
+                      <th id="premio">
+                        Prêmios
+                        <abbr title="Fique no ranking para ganhar prêmios!">
+                          <span class="bi bi-info-circle"></span>
+                        </abbr>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -107,6 +116,7 @@
                 >
                   Close
                 </button>
+              
               </div>
             </div>
           </div>
@@ -199,7 +209,7 @@
                   placeholder="Digite uma nota"
                   id="nota_input"
                 />
-                
+
                 <input
                   class="form-control"
                   type="text"

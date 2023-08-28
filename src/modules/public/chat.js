@@ -57,6 +57,7 @@ socket.on("colaboradores", (data) => {
 
         const emailCell = newRow.insertCell(0);
         const notaCell = newRow.insertCell(1);
+        const premio = newRow.insertCell(2)
 
         emailCell.innerHTML = emailColaborador;
         notaCell.innerHTML = notaColaborador;
@@ -66,13 +67,18 @@ socket.on("colaboradores", (data) => {
             emailCell.style.color = 'white';
             notaCell.style.color = 'white';
 
-            emailCell.style.backgroundColor = "#90ee90"; // Primeiro colocado
+            emailCell.style.backgroundColor = "#90ee90";
             notaCell.style.backgroundColor = "#90ee90";
+            i === 0 ? emailCell.style.backgroundColor = "red" : ''
+
+            i === 0 ? premio.innerHTML = '<i class="bi bi-currency-dollar">1500 USD</i>' : ''
+            i === 1 ? premio.innerHTML = '<i class="bi bi-currency-dollar">1000 USD</i>' : ''
+            i === 2 ? premio.innerHTML = '<i class="bi bi-currency-dollar">500 USD</i>'  : ''
+
         }
 
     }
     for (let obj = 3; obj < notaDecrescente.length; obj++) {
-        console.log(notaDecrescente[obj]);
         const newRow = tabelaDados.insertRow();
 
         const emailColaborador = newRow.insertCell(0);
