@@ -15,21 +15,21 @@ const colaboradores: Colaborador[] = [];
 colaboradores.push({
     email: 'lucas.fernandes@cliente.com',
     matricula: 3748,
-    nota: 1,
+    nota: 0,
     nome: 'lucas',
     foto_url: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png'
 })
 colaboradores.push({
     email: 'pedro.lima@cliente.com',
     matricula: 2482,
-    nota: 2,
+    nota: 0,
     nome: 'pedro',
     foto_url: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png'
 })
 colaboradores.push({
     email: 'maria.julianelli@cliente.com',
     matricula: 6449,
-    nota: 3,
+    nota: 0,
     nome: 'maria',
     foto_url: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png'
 })

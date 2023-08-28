@@ -61,30 +61,27 @@ socket.on("colaboradores", (data) => {
 
         emailCell.innerHTML = emailColaborador;
         notaCell.innerHTML = notaColaborador;
-        emailCell.style.color = 'white';
-        notaCell.style.color = 'white'
-        if (i === 0) {
+
+        if ((i === 0 && notaColaborador > 0) || (i === 1 && notaColaborador > 0) || (i === 2 && notaColaborador > 0)) {
+
+            emailCell.style.color = 'white';
+            notaCell.style.color = 'white';
+
             emailCell.style.backgroundColor = "green"; // Primeiro colocado
             notaCell.style.backgroundColor = "green";
-        } else if (i === 1) {
-            emailCell.style.backgroundColor = "blue"; // Segundo colocado
-            notaCell.style.backgroundColor = "blue";
-        } else if (i === 2) {
-            emailCell.style.backgroundColor = "red"; // Terceiro colocado
-            notaCell.style.backgroundColor = "red";
         }
 
     }
-    for (const obj of data.colaboradores) {
-
+    for (let obj = 3; obj < notaDecrescente.length; obj++) {
+        console.log(notaDecrescente[obj]);
         const newRow = tabelaDados.insertRow();
 
         const emailColaborador = newRow.insertCell(0);
         let notaColaborador = newRow.insertCell(1);
 
 
-        emailColaborador.innerHTML = obj.email;
-        notaColaborador.innerHTML = obj.nota;
+        emailColaborador.innerHTML = notaDecrescente[obj].email;
+        notaColaborador.innerHTML = notaDecrescente[obj].nota;
 
     }
 })
