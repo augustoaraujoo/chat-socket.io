@@ -67,8 +67,8 @@ socket.on("colaboradores", (data) => {
             emailCell.style.color = 'white';
             notaCell.style.color = 'white';
 
-            emailCell.style.backgroundColor = "green"; // Primeiro colocado
-            notaCell.style.backgroundColor = "green";
+            emailCell.style.backgroundColor = "#90ee90"; // Primeiro colocado
+            notaCell.style.backgroundColor = "#90ee90";
         }
 
     }
