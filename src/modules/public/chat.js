@@ -31,7 +31,7 @@ socket.on('dados_colaborador', (data) => {
     nomeColaboradorDIV.innerHTML = `${data.verify.nome}`
 
     const img = document.createElement("img");
-    img.style.width = '60px'
+    img.style.width = '70px'
     img.src = `${data.verify.foto_url}`
 
     fotoURLColaboradorDIV.appendChild(img)
