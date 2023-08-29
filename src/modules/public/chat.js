@@ -69,7 +69,6 @@ socket.on("colaboradores", (data) => {
 
             emailCell.style.backgroundColor = "#90ee90";
             notaCell.style.backgroundColor = "#90ee90";
-            i === 0 ? emailCell.style.backgroundColor = "red" : ''
 
             i === 0 ? premio.innerHTML = '<i class="bi bi-currency-dollar">1500 USD</i>' : ''
             i === 1 ? premio.innerHTML = '<i class="bi bi-currency-dollar">1000 USD</i>' : ''
